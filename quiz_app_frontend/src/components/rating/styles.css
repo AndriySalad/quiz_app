@@ -1,0 +1,111 @@
+.body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    table-layout: fixed; /* Додали це правило */
+}
+
+table th,
+table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    word-break: break-word;
+    max-width: 200px; /* Додали це правило */
+    overflow: hidden; /* Додали це правило */
+    text-overflow: ellipsis; /* Додали це правило */
+}
+
+.start-testing-button {
+    display: block;
+    width: 200px;
+    margin: 20px auto 10px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.start-testing-button:hover {
+    background-color: #45a049;
+}
+
+/* Адаптивні стилі для планшетів та мобільних пристроїв */
+@media (max-width: 768px) {
+    table th,
+    table td {
+        padding: 8px;
+        font-size: 14px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .start-testing-button {
+        width: 100%;
+        font-size: 16px;
+        margin-top: 20px;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    table th,
+    table td {
+        padding: 6px;
+        font-size: 12px;
+    }
+
+    .start-testing-button {
+        font-size: 14px;
+        margin-top: 20px;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 350px) {
+    table th,
+    table td {
+        padding: 6px;
+        font-size: 12px;
+        word-break: break-all;
+        max-width: none; /* Замінили на це правило */
+    }
+
+    .container {
+        width: 100%;
+        padding: 10px;
+        overflow-x: auto; /* Додали це правило */
+    }
+}
