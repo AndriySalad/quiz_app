@@ -9,6 +9,12 @@
     background-color: #f2f2f2;
 }
 
+.error {
+    border: 1px solid red;
+    background-color: #ffe6e6;
+    color: red;
+}
+
 .container {
     width: 90%;
     max-width: 500px;
