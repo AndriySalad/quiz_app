@@ -13,6 +13,17 @@
     box-sizing: border-box;
 }
 
+.question {
+    width: 100%;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+
 h1 {
     text-align: center;
 }
@@ -21,13 +32,6 @@ form {
     margin-bottom: 20px;
 }
 
-.question {
-    width: 90%;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    padding: 10px;
-    border-radius: 4px;
-}
 
 .question p {
     font-weight: bold;
