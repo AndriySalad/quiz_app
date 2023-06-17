@@ -2,16 +2,18 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import API from "../../utils/axios";
 import "./styles.css";
+import Spinner from "../spinner";
 
 const ResultPage = () => {
     const [result, setResult] = useState();
+    const [loading, setLoading] = useState(true);
     const userId = localStorage.getItem("user");
 
     const getResult = async () => {
         try{
             const response = await API.get(`app/quiz/answers/${userId}`);
             setResult(response.data);
-            console.log(result);
+            setLoading(false);
         }
         catch(err) {
             console.log(err);
@@ -20,6 +22,16 @@ const ResultPage = () => {
 
     useEffect(() => {
         getResult();
+        const disableBackNavigation = () => {
+            window.history.pushState(null, document.title, window.location.href);
+            window.addEventListener("popstate", disableBackNavigation);
+        };
+      
+        disableBackNavigation();
+      
+        return () => {
+            window.removeEventListener("popstate", disableBackNavigation);
+        };
     }, [])
 
 
@@ -28,7 +40,8 @@ const ResultPage = () => {
             <div className="container">
                 <h1>Результати тестування</h1>
                 {
-                    !result ? (<h3>Wait...</h3>) :
+                    loading ? (<Spinner/>) : !result ? 
+                    (<h3>Something went wrong...</h3>)  :
                     (
                         <>
                             <div className="result-container">

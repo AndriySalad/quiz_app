@@ -24,6 +24,11 @@ table {
     table-layout: fixed; /* Додали це правило */
 }
 
+.center {
+    text-align: center;
+}
+  
+
 table th,
 table td {
     padding: 8px;
