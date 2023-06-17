@@ -6,11 +6,11 @@ import java.util.List;
 
 public class AnswersDto {
     private Long answererId;
-    private List<Answer> answerList;
+    private List<Answer> answers;
 
-    public AnswersDto(Long answererId, List<Answer> answerList) {
+    public AnswersDto(Long answererId, List<Answer> answers) {
         this.answererId = answererId;
-        this.answerList = answerList;
+        this.answers = answers;
     }
 
     public AnswersDto() {
@@ -24,11 +24,11 @@ public class AnswersDto {
         this.answererId = answererId;
     }
 
-    public List<Answer> getAnswerList() {
-        return answerList;
+    public List<Answer> getAnswers() {
+        return answers;
     }
 
-    public void setAnswerList(List<Answer> answerList) {
-        this.answerList = answerList;
+    public void setAnswers(List<Answer> answers) {
+        this.answers = answers;
     }
 }

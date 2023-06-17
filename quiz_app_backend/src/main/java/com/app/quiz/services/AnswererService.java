@@ -9,6 +9,6 @@ public interface AnswererService {
 
     List<Answerer> getAllAnswerer();
     Long createAnswerer(AnswererDto answererDto);
-    Answerer getAnswererById(Long id);
+    Answerer getAnswererById(Long id) throws ClassNotFoundException;
 
 }

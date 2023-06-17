@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequestMapping("/app/quiz")
 @RestController
@@ -25,7 +26,7 @@ public class AnswererController {
     }
 
     @GetMapping("/answerers/{id}")
-    public ResponseEntity<Answerer> getAnswerers(@PathVariable Long id){
+    public ResponseEntity<Answerer> getAnswerers(@PathVariable Long id) throws ClassNotFoundException {
         return ResponseEntity.status(HttpStatus.OK).body(answererService.getAnswererById(id));
     }
 

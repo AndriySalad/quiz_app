@@ -2,7 +2,9 @@ package com.app.quiz.models;
 
 public class Answer {
     private Long questionId;
+
     private int option;
+
 
     public Answer(Long questionId, int option) {
         this.questionId = questionId;
@@ -12,13 +14,15 @@ public class Answer {
     public Answer() {
     }
 
-    public Long getQuestion_id() {
+
+    public Long getQuestionId() {
         return questionId;
     }
 
-    public void setQuestion_id(Long questionId) {
+    public void setQuestionId(Long questionId) {
         this.questionId = questionId;
     }
+
 
     public int getOption() {
         return option;
