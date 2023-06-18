@@ -1,39 +1,19 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import API from "../../utils/axios";
 import "./styles.css";
+import { getResult } from "../../utils/requests";
 import Spinner from "../spinner";
+import { disableBackNavigation } from "../../utils/disableBackNavigation";
 
 const ResultPage = () => {
     const [result, setResult] = useState();
     const [loading, setLoading] = useState(true);
     const userId = localStorage.getItem("user");
 
-    const getResult = async () => {
-        try{
-            const response = await API.get(`app/quiz/answers/${userId}`);
-            setResult(response.data);
-            setLoading(false);
-        }
-        catch(err) {
-            console.log(err);
-        }
-    }
-
     useEffect(() => {
-        getResult();
-        const disableBackNavigation = () => {
-            window.history.pushState(null, document.title, window.location.href);
-            window.addEventListener("popstate", disableBackNavigation);
-        };
-      
+        getResult(setResult, userId, setLoading);      
         disableBackNavigation();
-      
-        return () => {
-            window.removeEventListener("popstate", disableBackNavigation);
-        };
-    }, [])
-
+    }, [userId])
 
     return(
         <div className="body">

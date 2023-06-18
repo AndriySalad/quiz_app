@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import API from "../../utils/axios";
 import Spinner from "../spinner";
 import "./styles.css";
+import { getQuestions } from "../../utils/requests";
+import { disableBackNavigation } from "../../utils/disableBackNavigation";
 
 const QuizForm = () => {
     const [questionList, setQuestionList] = useState([]);
@@ -11,29 +13,12 @@ const QuizForm = () => {
     const [loading, setLoading] = useState(true);
     const answererId = localStorage.getItem("user");
     const navigate = useNavigate();
-    const getQuestions = async () => {
-        try {
-            const resp = await API.get("app/quiz/questions");
-            setQuestionList(resp.data);
-            setLoading(false);
-        } catch (err) {
-            console.log(err);
-        }
-    };
+    
 
     useEffect(() => {
-        getQuestions();
-
-        const disableBackNavigation = () => {
-            window.history.pushState(null, document.title, window.location.href);
-            window.addEventListener("popstate", disableBackNavigation);
-        };
+        getQuestions(setQuestionList, setLoading);
       
         disableBackNavigation();
-      
-        return () => {
-            window.removeEventListener("popstate", disableBackNavigation);
-        };
     }, []);
 
     const handleOptionChange = (selectedOption) => {
@@ -90,8 +75,6 @@ const QuizForm = () => {
             console.log("Something went wrong...", err);
         }
     };
-
-
 
     const currentQuestion = questionList[currentQuestionIndex];
 

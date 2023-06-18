@@ -4,6 +4,7 @@ import ResultPage from "./components/result";
 import { Route, Routes } from "react-router-dom";
 import PrivateRoute from "./components/privateRoute";
 import RegisterForm from "./components/form";
+import PageNotFound from "./components/not-found";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/result" Component={ResultPage}/>
       </Route>
       <Route path="/register" Component={RegisterForm}/>
+      <Route path="/*" Component={PageNotFound}/>
     </Routes>
   );
 }

@@ -1,37 +1,19 @@
 import React, { useEffect, useState } from "react";
-import API from "../../utils/axios";
 import { Link } from "react-router-dom";
 import "./styles.css";
 import Spinner from "../spinner";
+import { getRating } from "../../utils/requests";
+import { disableBackNavigation } from "../../utils/disableBackNavigation";
 
 const Rating = () => {
     const [rating, setRating] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const getRating = async () => {
-        try {
-            const resp = await API.get("app/quiz/answerers");
-            setRating(resp.data);
-            setLoading(false);
-        } catch (err) {
-            console.log(err);
-        }
-    };
-
     useEffect(() => {
         localStorage.clear();
-        getRating();
+        getRating(setRating, setLoading);
         
-        const disableBackNavigation = () => {
-            window.history.pushState(null, document.title, window.location.href);
-            window.addEventListener("popstate", disableBackNavigation);
-        };
-      
         disableBackNavigation();
-      
-        return () => {
-            window.removeEventListener("popstate", disableBackNavigation);
-        };
     }, []);
 
     return (
