@@ -33,7 +33,7 @@ const ResultPage = () => {
                             <ul className="question-list">
                                 {
                                     result.answers.map((answer, i) => (
-                                        <li className={answer.correctness ? "correct" : "incorrect"}>Питання {i + 1}. {answer.questionDescription}</li>
+                                        <li className={answer.correctness ? "correct" : "incorrect"} key={i + 1}> Питання {i + 1}. {answer.questionDescription}</li>
                                     ))
                                 }
                             </ul>

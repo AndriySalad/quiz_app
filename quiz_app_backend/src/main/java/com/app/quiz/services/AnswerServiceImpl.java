@@ -28,10 +28,15 @@ public class AnswerServiceImpl implements AnswerService {
         Answerer answerer = answererService.getAnswererById(answersDto.getAnswererId());
         List<Question> questions = questionService.getAllQuestion();
         for(int i = 0; i < answersDto.getAnswers().size(); i++){
-            answerRepository.saveAnswers(answerer.getId(),
-                    answersDto.getAnswers().get(i).getQuestionId(),
-                    answersDto.getAnswers().get(i).getOption(),
-                    answersDto.getAnswers().get(i).getOption() == questions.get(i).getAnswer());
+            for(int j = 0; j < questions.size(); j++)
+            {
+                if (answersDto.getAnswers().get(i).getQuestionId().equals(questions.get(j).getId())){
+                    answerRepository.saveAnswers(answerer.getId(),
+                            answersDto.getAnswers().get(i).getQuestionId(),
+                            answersDto.getAnswers().get(i).getOption(),
+                            answersDto.getAnswers().get(i).getOption() == questions.get(j).getAnswer());
+                }
+            }
         }
     }
 

@@ -30,10 +30,11 @@ public class AnswerRepository {
     }
 
     public List<ResultAnswer> getAnswersByUserId(Long answererId) {
-        String sql = "SELECT q.description, a.correct " +
+        String sql = "SELECT q.description, a.correct, q.id " +
                 "FROM question q " +
                 "JOIN answers a ON q.id = a.question_id " +
-                "WHERE a.answerer_id = :answererId;";
+                "WHERE a.answerer_id = :answererId " +
+                "ORDER BY q.id";
         SqlParameterSource parameterSource = new MapSqlParameterSource("answererId", answererId);
         return namedParameterJdbcTemplate.query(sql, parameterSource, new AnswerMapper());
     }
